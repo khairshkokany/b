@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 // import IsLoadingAndError from './IsLoadingAndError';
-// import LoginButton from './components/LoginButton';
+import LoginButton from './components/LoginButton';
 // import LogoutButton from './components/LogoutButton';
 import BestBooks from './BestBooks'
 import Profile from './components/Profile';
@@ -12,17 +12,17 @@ import {
   Route
 } from "react-router-dom";
 
-// import { withAuth0 } from '@auth0/auth0-react';
+import { withAuth0 } from '@auth0/auth0-react';
 // import Login from './Login';
 // import LogoutButton from './components/LogoutButton';
 
 class App extends React.Component {
   
   render() {
-  //   const {
-  //    isAuthenticated,
+    const {
+     isAuthenticated,
      
-  //  } = this.props.auth0;
+   } = this.props.auth0;
 
    
 
@@ -36,9 +36,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/">
               {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
-                {/* {isAuthenticated ? <BestBooks /> : <LoginButton />} */}
+                {isAuthenticated ? <BestBooks /> : <LoginButton />}
                 {/* <LogoutButton /> */}
-               <BestBooks />
+               {/* <BestBooks /> */}
             </Route >
 
             <Route exact path="/Profile">
@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
 
 
 
